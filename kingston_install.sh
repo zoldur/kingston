@@ -7,10 +7,11 @@ COIN_DAEMON='kingstond'
 COIN_CLI='kingston-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO='https://github.com/kingstoncash/kingston.git'
-COIN_TZG=''
+COIN_TZG='https://github.com/zoldur/kingston/releases/download/4020000/kingston.tgz'
+COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='kingston'
 COIN_PORT=9211
-RPC_PORT=9213
+RPC_PORT=9212
 
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -31,7 +32,7 @@ function compile_node() {
   ./configure
   make
   compile_error
-  make install
+  make install >/dev/null 2>&1 
   cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   strip $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI
@@ -45,7 +46,7 @@ function download_node() {
   tar xvzf $COIN_ZIP >/dev/null 2>&1
   compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
-  cd -
+  cd -i >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
 }
 
