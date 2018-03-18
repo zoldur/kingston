@@ -46,7 +46,7 @@ function download_node() {
   tar xvzf $COIN_ZIP >/dev/null 2>&1
   compile_error
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
-  cd -i >/dev/null 2>&1
+  cd - >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
 }
 
