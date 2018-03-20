@@ -32,7 +32,7 @@ Alias Address Privkey TxHash Output_index
 10. Go to **Masternode Tab**. If you tab is not shown, please enable it from: **Settings - Options - Wallet - Show Masternodes Tab**
 11. Click **Update status** to see your node. If it is not shown, close the wallet and start it again. Make sure the wallet is un
 12. Select your MN and click **Start Alias** to start it.
-12. Alternatively, ppen **Debug Console** and type:
+13. Alternatively, open **Debug Console** and type:
 ```
 startmasternode "alias" "0" "MN1"
 ```
