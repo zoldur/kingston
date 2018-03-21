@@ -34,7 +34,7 @@ Alias Address Privkey TxHash Output_index
 12. Select your MN and click **Start Alias** to start it.
 13. Alternatively, open **Debug Console** and type:
 ```
-startmasternode "alias" "0" "MN1"
+masternode start-alias MN1
 ```
 ***
 
@@ -44,7 +44,6 @@ kingston-cli mnsync status
 kingston-cli getinfo
 kingston-cli masternode status #This command will show your masternode status
 ```
-
 Also, if you want to check/start/stop **kingston** , run one of the following commands as **root**:
 
 ```
@@ -55,7 +54,7 @@ systemctl is-enabled kingston #To check whetether kingston service is enabled on
 ```
 ***
 
-## Issues:
+## Issues
 If your Kingston desktop wallet doesn't sync, go to **Tools -> Open Wallet Configuration File** and add the following entries:
 ```
 addnode=103.19.211.58:9211
@@ -68,6 +67,16 @@ addnode=45.64.254.58:9211
 addnode=54.36.5.66:9211
 addnode=81.169.179.241:9211
 ```
+***
+
+## Wallet resync
+If you need to reindex your wallet, run the following commands
+```
+systemctl stop Kingston
+rm -r /root/.kingston/{budget.dat,db.log,fee_estimates.dat,blocks,chainstate,mncache.dat,mnpayments.dat,peers.dat}
+systemctl start kingston
+```
+***
 
 ## Donations:  
 
@@ -77,4 +86,3 @@ Any donation is highly appreciated.
 **BTC**: 3MQLEcHXVvxpmwbB811qiC1c6g21ZKa7Jh  
 **ETH**: 0x26B9dDa0616FE0759273D651e77Fe7dd7751E01E  
 **LTC**: LeZmPXHuQEhkd8iZY7a2zVAwF7DCWir2FF
-
