@@ -108,7 +108,7 @@ function create_config() {
 rpcuser=$RPCUSER
 rpcport=$RPC_PORT
 rpcpassword=$RPCPASSWORD
-rpcallowip=127.0.0.1
+rpcallowip=$NODE_IP
 listen=1
 server=1
 daemon=1
@@ -139,11 +139,10 @@ clear
 }
 
 function update_config() {
-  sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
   cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
+staking=0
 logintimestamps=1
 maxconnections=256
-#bind=$NODEIP
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
@@ -234,7 +233,7 @@ apt-get update >/dev/null 2>&1
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
-libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++>/dev/null 2>&1
+libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev libzmq3-dev >/dev/null 2>&1
 if [ "$?" -gt "0" ];
   then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
@@ -282,10 +281,10 @@ clear
 checks
 prepare_system
 ask_permission
-#if [[ "$ZOLDUR" == "YES" ]]; then
-#  download_node
-#else
+if [[ "$ZOLDUR" == "YES" ]]; then
+  download_node
+else
   create_swap
   compile_node
-#fi
+fi
 setup_node
