@@ -282,10 +282,10 @@ clear
 checks
 prepare_system
 ask_permission
-if [[ "$ZOLDUR" == "YES" ]]; then
-  download_node
-else
+#if [[ "$ZOLDUR" == "YES" ]]; then
+#  download_node
+#else
   create_swap
   compile_node
-fi
+#fi
 setup_node
