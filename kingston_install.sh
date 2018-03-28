@@ -108,7 +108,7 @@ function create_config() {
 rpcuser=$RPCUSER
 rpcport=$RPC_PORT
 rpcpassword=$RPCPASSWORD
-rpcallowip=$NODE_IP
+rpcallowip=127.0.0.1
 listen=1
 server=1
 daemon=1
