@@ -134,6 +134,7 @@ function create_key() {
     COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
   fi
   $COIN_PATH$COIN_CLI stop
+  rm -r $CONFIGFOLDER/{backups,blocks,chainstate,database,db.log,peers.dat,mncache.dat,mnpayments.dat,fee_estimates.dat,budget.dat}
 fi
 clear
 }
