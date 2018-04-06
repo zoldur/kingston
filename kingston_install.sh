@@ -7,7 +7,7 @@ COIN_DAEMON='kingstond'
 COIN_CLI='kingston-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO='https://github.com/kingstoncash/kingston.git'
-COIN_TGZ='https://github.com/zoldur/kingston/releases/download/4020000/kingston.tgz'
+COIN_TGZ='https://github.com/zoldur/kingston/releases/download/4.2.0/kingston.tgz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='kingston'
 COIN_PORT=9211
@@ -34,7 +34,7 @@ function compile_node() {
   compile_error
   make install >/dev/null 2>&1 
   cd - >/dev/null 2>&1
-  rm -rf $TMP_FOLDER >/dev/null 2>&1
+# rm -rf $TMP_FOLDER >/dev/null 2>&1
   strip $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI
 }
 
